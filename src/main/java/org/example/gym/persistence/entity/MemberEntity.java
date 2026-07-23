@@ -14,6 +14,10 @@ public class MemberEntity {
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
+    @ManyToOne
+    @JoinColumn(name = "trainer_id")
+    private TrainerEntity trainer;
+
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<MeasurementEntity> measurements;
 
@@ -22,6 +26,9 @@ public class MemberEntity {
 
     public String getFullName() { return fullName; }
     public void setFullName(String fullName) { this.fullName = fullName; }
+
+    public TrainerEntity getTrainer() { return trainer; }
+    public void setTrainer(TrainerEntity trainer) { this.trainer = trainer; }
 
     public List<MeasurementEntity> getMeasurements() { return measurements; }
     public void setMeasurements(List<MeasurementEntity> measurements) { this.measurements = measurements; }
